@@ -12,6 +12,12 @@ The challenge provides:
 * output.raw
 * mechanic.py
 
+## Technical Summary
+
+The challenge implemented a post-quantum encryption workflow using ML-KEM-1024. During source code review, I discovered that every generated secret key was written directly to a file named `output.raw`.
+
+By determining the ML-KEM secret key size and splitting the file into fixed-size chunks, I was able to identify valid decryption keys and automate recursive decryption of every encryption layer until the original PNG image containing the flag was recovered.
+
 ## Initial Analysis
 
 After extracting the archive, I inspected the provided files.
